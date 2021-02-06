@@ -1,0 +1,48 @@
+// Membuat database dan masuk ke dalam database.
+CREATE DATABASE db_dwbike;
+USE db_dwbike;
+
+// Membuat tabel.
+CREATE TABLE user (
+    id int NOT NULL, 
+    name VARCHAR(255),
+    email VARCHAR(255), 
+    password VARCHAR(255),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE merk (
+    id int NOT NULL,
+    name VARCHAR(255),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE cycle (
+    id int NOT NULL,
+    name VARCHAR(255),
+    price int,
+    stock int,
+    image VARCHAR(255),
+    merk_id int NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (merk_id) REFERENCES merk(id)
+);
+
+// Memasukkan data.
+INSERT INTO user VALUES (1, "demo", "demo@example.com", "demo");
+
+INSERT INTO merk VALUES 
+    (1, "Brompton"),
+    (2, "Family"),
+    (3, "Titanium"),
+    (4, "Wincycle");
+
+INSERT INTO cycle VALUES
+    (1, "Brompton", 17000000, 10, null, 1),
+    (2, "Mountain", 30000000, 9, null, 2),
+    (3, "Lipat Tita", 30000000, 5, null, 3),
+    (4, "S Lipat", 13000000, 2, null, 4),
+    (5, "Fixie", 3850000, 2, null, 4),
+    (6, "Fixie", 4855000, 9, null, 4),
+    (7, "Road", 10000000, 5, null, 4),
+    (8, "BMX", 5000000, 20, null, 4);
